@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.F Car Rental Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background: url('https://i.pinimg.com/originals/86/9b/b2/869bb25339f520cbf4e3ec4c67617938.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-color: rgba(240, 240, 240, 0.8);
+            background-blend-mode: overlay;
+        }
+        h1 {
+            color: #333;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        form {
+            margin-top: 20px;
+            text-align: left;
+            display: inline-block;
+            width: 100%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        form input, form button, form select {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .car {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            background-color: #fff;
+        }
+      .car img {
+    max-width: 150px;
+    max-height: 100px;
+    width: auto;
+    height: auto; 
+    margin-right: 10px;
+}
+
+        }
+        .color-picker {
+            margin-top: 20px;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        #logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+        footer table {
+            margin: 0 auto;
+            width: 80%;
+            border-collapse: collapse;
+        }
+        footer table, footer th, footer td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        footer th {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <img id="logo" src="https://i.pinimg.com/originals/86/9b/b2/869bb25339f520cbf4e3ec4c67617938.jpg" alt="Logo">
+    <h1>Welcome to Our T.F Car Rental Service</h1>
+    <nav>
+        <ul>
+            <li><a href="#" id="linkSearch">Search Cars</a></li>
+            <li><a href="#" id="linkReservation">Make a Reservation</a></li>
+            <li><a href="#" id="linkManage">Manage Your Bookings</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <h2>Available Cars</h2>
+        <div id="cars" class="table-container">
+            <!-- Car data will be injected here -->
+        </div>
+    </div>
+
+    <div class="color-picker">
+        <label for="bgColor">Choose Background Color:</label>
+        <input type="color" id="bgColor">
+    </div>
+
+    <footer>
+        <table>
+            <thead>
+                <tr>
+                    <th>Developers</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Muhammad Talha Anayat Awan and Farheen Tariq</td>
+                    <td>This Website is Designed by M.Talha Awan and Farheen Tariq</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&copy; 2024 T.F Car Rental Service. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cars = [
+                {
+                    id: 1,
+                    model: 'Toyota Corolla',
+                    price: 5000,
+                    image: 'https://toyota-central.com/Assets/images/Vehicle/CorollaX/Color/SilverMetallic.png'
+                },
+                {
+                    id: 2,
+                    model: 'Honda Civic',
+                    price: 5500,
+                    image: 'https://e7.pngegg.com/pngimages/229/415/png-clipart-2018-honda-civic-hatchback-personal-luxury-car-2018-honda-civic-hatchback-honda-compact-car-sedan.png'
+                },
+                {
+                    id: 3,
+                    model: 'Suzuki Alto',
+                    price: 4000,
+                    image: 'https://banner2.cleanpng.com/20180405/tye/kisspng-suzuki-alto-suzuki-mehran-car-suzuki-celerio-suzuki-5ac656e0bb64f2.6690036515229478087676.jpg'
+                },
+                {
+                    id: 4,
+                    model: 'Toyota Land Cruiser',
+                    price: 12000,
+                    image: 'https://cdn.rotorint.com/LandCruiser_300/2021_07_Jul/e/360/png/lo/907x510/SPN_LC3_010040FB205E55210A0_comp_001.png'
+                }
+            ];
+
+            const bookings = [];
+
+            const contentDiv = document.getElementById('content');
+            const carsDiv = document.getElementById('cars');
+
+            const renderCars = () => {
+                carsDiv.innerHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Car Image</th>
+                                <th>Car Model</th>
+                                <th>Price per Day (PKR)</th>
+                                <th>Car ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${cars.map(car => `
+                                <tr>
+                                    <td><img src="${car.image}" alt="${car.model}"></td>
+                                    <td>${car.model}</td>
+                                    <td>₨${car.price}</td>
+                                    <td>${car.id}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            };
+
+            const renderContent = (html) => {
+                contentDiv.innerHTML = html;
+            };
+
+            renderCars();
+
+            document.getElementById('bgColor').addEventListener('change', function() {
+                document.body.style.backgroundColor = this.value;
+            });
+
+            document.getElementById('linkSearch').addEventListener('click', () => {
+                renderContent(`
+                    <h1>Search for Available Cars</h1>
+                    <form id="searchForm">
+                        <label for="pickupDate">Pickup Date:</label>
+                        <input type="date" id="pickupDate" name="pickupDate" required>
+                        <label for="returnDate">Return Date:</label>
+                        <input type="date" id="returnDate" name="returnDate" required>
+                        <button type="submit">Search</button>
+                    </form>
+                    <div id="searchResults" class="table-container"></div>
+                `);
+
+                document.getElementById('searchForm').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const pickupDate = document.getElementById('pickupDate').value;
+                    const returnDate = document.getElementById('returnDate').value;
+
+                  
+                    const availableCars = cars;
+
+                    const resultsDiv = document.getElementById('searchResults');
+                    resultsDiv.innerHTML = `
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Car Image</th>
+                                    <th>Car Model</th>
+                                    <th>Price per Day (PKR)</th>
+                                    <th>Car ID</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${availableCars.map(car => `
+                                    <tr>
+                                        <td><img src="${car.image}" alt="${car.model}"></td>
+                                        <td>${car.model}</td>
+                                        <td>₨${car.price}</td>
+                                        <td>${car.id}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                });
+            });
+
+            document.getElementById('linkReservation').addEventListener('click', () => {
+                renderContent(`
+                    <h1>Make a Reservation</h1>
+                    <form id="reservationForm">
+                        <label for="
+carId">Car ID:</label>
+                        <input type="number" id="carId" name="carId" required>
+                        <label for="pickupDate">Pickup Date:</label>
+                        <input type="date" id="pickupDate" name="pickupDate" required>
+                        <label for="returnDate">Return Date:</label>
+                        <input type="date" id="returnDate" name="returnDate" required>
+                        <button type="submit">Reserve</button>
+                    </form>
+                    <div id="reservationResults" class="table-container"></div>
+                `);
+
+                document.getElementById('reservationForm').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const carId = document.getElementById('carId').value;
+                    const pickupDate = document.getElementById('pickupDate').value;
+                    const returnDate = document.getElementById('returnDate').value;
+
+                    // Simulate making a reservation
+                    bookings.push({ carId, pickupDate, returnDate });
+
+                    const resultsDiv = document.getElementById('reservationResults');
+                    resultsDiv.innerHTML = `
+                        <p>Reservation successful!</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Car ID</th>
+                                    <th>Pickup Date</th>
+                                    <th>Return Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${bookings.map(booking => `
+                                    <tr>
+                                        <td>${booking.carId}</td>
+                                        <td>${booking.pickupDate}</td>
+                                        <td>${booking.returnDate}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                });
+            });
+
+            document.getElementById('linkManage').addEventListener('click', () => {
+                renderContent(`
+                    <h1>Manage Your Bookings</h1>
+                    <div id="manageResults" class="table-container"></div>
+                `);
+
+                const resultsDiv = document.getElementById('manageResults');
+                resultsDiv.innerHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Car ID</th>
+                                <th>Pickup Date</th>
+                                <th>Return Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${bookings.map((booking, index) => `
+                                <tr>
+                                    <td>${booking.carId}</td>
+                                    <td>${booking.pickupDate}</td>
+                                    <td>${booking.returnDate}</td>
+                                    <td><button data-index="${index}" class="cancelBtn">Cancel</button></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+
+                document.querySelectorAll('.cancelBtn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = this.getAttribute('data-index');
+                        bookings.splice(index, 1);
+                        resultsDiv.innerHTML = `
+                            <p>Booking cancelled!</p>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Car ID</th>
+                                        <th>Pickup Date</th>
+                                        <th>Return Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${bookings.map((booking, index) => `
+                                        <tr>
+                                            <td>${booking.carId}</td>
+                                            <td>${booking.pickupDate}</td>
+                                            <td>${booking.returnDate}</td>
+                                            <td><button data-index="${index}" class="cancelBtn">Cancel</button></td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        `;
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
